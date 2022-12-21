@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.headerTag {
+  display: flex;
+  justify-content: center;
+  background-color: grey;
+}
+.container {
+  border: 2px solid red;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#title {
+  margin: 0.45em;
+}
+.mainInput {
+  border: 2px solid #999999;
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 1em;
+}
+.finalInput {
+  border: 2px solid blue;
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin: 1em;
+}
+.personalInfo,
+.educationInfo {
+  display: flex;
+  flex-direction: row;
+}
+.infoForm,
+.educationForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 1em;
+}
+.personalTest,
+.testing {
+  border: 2px solid red;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
