@@ -1,26 +1,39 @@
 import './App.css';
-import { Component } from 'react';
-import PersonalInfo from './components/PersonalInfo';
+import React, { Component, useState } from 'react';
+import Personal from './components/Personal';
 import Education from './components/Education';
 import Header from './components/Header';
-import FinalInput from './components/FinalInput';
+import ResumePreview from './components/ResumePreview';
+import RenderInfo from './components/RenderInfo';
+import RenderEducation from './components/RenderEducation';
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      firstName: 'First',
+      lastName: 'Last',
+      email: 'Email',
+      phoneNumber: 'Phone',
+      description: 'Description',
+      isDefault: true,
+    }
+  }
   render() {
     return (
-      <div>
+      <div className='testersbro1'>
         <Header />
-          <div className='mainInput'>
-            <PersonalInfo />
-            <Education />
-          </div>
-          <div className='finalInput'>test
-          {/* <FinalInput /> */}
-          {/* thinking that FinalInput should render everything starting from underneath this line but idk*/}
-          </div>
+        <div className="testersbro2">
+          <Personal />
+          <Education />
+        </div>
+        <div id='renderedInfo'>
+          <ResumePreview info={this.state} />
+          {/* {currentDiv} */}
+
+        </div>
       </div>
     )
   }
 }
-
 export default App;

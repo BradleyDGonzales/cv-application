@@ -7,9 +7,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .headerTag {
-  display: flex;
-  justify-content: center;
+  grid-row-start: 1;
+  grid-column: 1 / span 2;
   background-color: grey;
+}
+.testersbro2 {
+  grid-row-start: 2;
 }
 .container {
   border: 2px solid red;
@@ -19,25 +22,18 @@ body {
 #title {
   margin: 0.45em;
 }
-.mainInput {
-  border: 2px solid #999999;
+.personalDescription {
+  border: 2px solid red;
+}
+#mainInput {
+  /* border: 2px solid #999999; */
   border-radius: 7px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin: 1em;
-}
-.finalInput {
-  border: 2px solid blue;
-  border-radius: 7px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  margin: 1em;
-}
-.personalInfo,
-.educationInfo {
-  display: flex;
-  flex-direction: row;
+  width: 50%;
 }
 .infoForm,
 .educationForm {
@@ -46,9 +42,11 @@ body {
   gap: 12px;
   margin: 1em;
 }
-.personalTest,
-.testing {
-  border: 2px solid red;
+.testersbro1 {
+  display: grid;
+  grid-template-rows: .1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;

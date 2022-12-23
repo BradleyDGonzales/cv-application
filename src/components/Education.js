@@ -1,10 +1,13 @@
-import React, { Component, useRef } from "react";
+import React, { Component, createElement, useRef } from "react";
+import ReactDOM, { createPortal } from "react-dom";
 import RenderEducation from "./RenderEducation";
-
+import createRoot from 'react-dom/client'
+import App from "../App";
+import { render } from "@testing-library/react";
+const called = true;
 class Education extends Component {
     constructor() {
         super()
-
         this.state = {
             schoolName: '',
             majorName: '',
@@ -31,12 +34,12 @@ class Education extends Component {
                 break;
             case 'dateStart':
                 this.setState({
-                    dateStart: new Date(e.target.value).toLocaleDateString('en-US', {timeZone: 'UTC'}),
+                    dateStart: new Date(e.target.value).toLocaleDateString('en-US', { timeZone: 'UTC' }),
                 })
                 break;
             case 'dateEnd':
                 this.setState({
-                    dateEnd: new Date(e.target.value).toLocaleDateString('en-US', {timeZone: 'UTC'}),
+                    dateEnd: new Date(e.target.value).toLocaleDateString('en-US', { timeZone: 'UTC' }),
                 })
                 break;
             case 'gpa':
@@ -53,13 +56,13 @@ class Education extends Component {
         return (
             <div className="educationInfo">
                 <form className="educationForm" onSubmit={this.handleSubmit}>
-                    <input onChange={this.handleChange} type='text' id='schoolName' placeholder="Name of school"/>
-                    <input onChange={this.handleChange} type='text' id='majorName' placeholder="Major"/>
-                    <input onChange={this.handleChange} type='text' onFocus={(e) => (e.target.type = "date")} id='dateStart' placeholder="Start date"/>
-                    <input onChange={this.handleChange} type='text' onFocus={(e) => (e.target.type = "date")} id='dateEnd' placeholder="End date"/>
-                    <input onChange={this.handleChange} type='text' id='gpa' placeholder="GPA"/>
+                    <input onChange={this.handleChange} type='text' id='schoolName' placeholder="Name of school" />
+                    <input onChange={this.handleChange} type='text' id='majorName' placeholder="Major" />
+                    <input onChange={this.handleChange} type='text' onFocus={(e) => (e.target.type = "date")} id='dateStart' placeholder="Start date" />
+                    <input onChange={this.handleChange} type='text' onFocus={(e) => (e.target.type = "date")} id='dateEnd' placeholder="End date" />
+                    <input onChange={this.handleChange} type='text' id='gpa' placeholder="GPA" />
                 </form>
-                <RenderEducation info={info} />
+                {createPortal(<RenderEducation info={info}/>, document.getElementById('renderedInfo'))}
             </div>
         )
     }
