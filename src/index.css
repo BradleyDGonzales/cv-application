@@ -6,22 +6,27 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 #headerTag {
   grid-row-start: 1;
   grid-column: 1 / span 2;
   background-color: grey;
 }
+
 .container {
   border: 2px solid red;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
 #titleName {
   margin: 0.45em;
 }
+
 .personalDescription {
   border: 2px solid red;
 }
+
 #mainInput {
   /* border: 2px solid #999999; */
   border-radius: 7px;
@@ -32,9 +37,11 @@ body {
   margin: 1em;
   width: 50%;
 }
+
 #myButtons {
   text-align: center;
 }
+
 .infoForm,
 .experienceForm,
 .educationForm {
@@ -43,12 +50,14 @@ body {
   gap: 12px;
   margin: 1em;
 }
+
 #container {
   display: grid;
   grid-template-rows: .1fr 1fr;
   grid-template-columns: 1fr 1fr;
-  
+
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
