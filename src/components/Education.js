@@ -1,68 +1,22 @@
 import React, { Component, createElement, useRef } from "react";
-import ReactDOM, { createPortal } from "react-dom";
-import RenderEducation from "./RenderEducation";
-import createRoot from 'react-dom/client'
-import App from "../App";
-import { render } from "@testing-library/react";
-const called = true;
+import { handleEduClick } from "../App";
+import uniqid from 'uniqid'
 class Education extends Component {
-    constructor() {
-        super()
-        this.state = {
-            schoolName: '',
-            majorName: '',
-            dateStart: '',
-            dateEnd: '',
-            gpa: '',
-        }
-        this.handleChange = this.handleChange.bind(this);
-    }
-    handleSubmit(e) {
-        e.preventDefault();
-    }
-    handleChange(e) {
-        switch (e.target.id) {
-            case 'schoolName':
-                this.setState({
-                    schoolName: e.target.value,
-                })
-                break;
-            case 'majorName':
-                this.setState({
-                    majorName: e.target.value,
-                })
-                break;
-            case 'dateStart':
-                this.setState({
-                    dateStart: new Date(e.target.value).toLocaleDateString('en-US', { timeZone: 'UTC' }),
-                })
-                break;
-            case 'dateEnd':
-                this.setState({
-                    dateEnd: new Date(e.target.value).toLocaleDateString('en-US', { timeZone: 'UTC' }),
-                })
-                break;
-            case 'gpa':
-                this.setState({
-                    gpa: e.target.value,
-                })
-                break;
-            default:
-                return;
-        }
-    }
     render() {
-        const info = this.state;
+        console.log('aheyyy', this.props)
         return (
             <div className="educationInfo">
-                <form className="educationForm" onSubmit={this.handleSubmit}>
-                    <input onChange={this.handleChange} type='text' id='schoolName' placeholder="Name of school" />
-                    <input onChange={this.handleChange} type='text' id='majorName' placeholder="Major" />
-                    <input onChange={this.handleChange} type='text' onFocus={(e) => (e.target.type = "date")} id='dateStart' placeholder="Start date" />
-                    <input onChange={this.handleChange} type='text' onFocus={(e) => (e.target.type = "date")} id='dateEnd' placeholder="End date" />
-                    <input onChange={this.handleChange} type='text' id='gpa' placeholder="GPA" />
-                </form>
-                {createPortal(<RenderEducation info={info}/>, document.getElementById('renderedInfo'))}
+                {this.props.info.education.map((education, index) => {
+                    return (
+                        <form className="educationForm">
+                            <input defaultValue={education.schoolName} onChange={(e) => this.props.onCompChange(e,index)} placeholder="Name of school" key={uniqid()} type='text' id={'schoolName'+ index}></input>
+                            <input defaultValue={education.majorName} onChange={(e) => this.props.onCompChange(e,index)} placeholder="Major" key={uniqid()}  type='text' id={'majorName' + index}></input>
+                            <input defaultValue={education.dateEnd} onChange={(e) => this.props.onCompChange(e,index)} placeholder="Year" key={uniqid()}  type='text' id={'dateEnd' + index}></input>
+                            <input defaultValue={education.gpa} onChange={(e) => this.props.onCompChange(e,index)} placeholder="GPA out of 4.0" key={uniqid()} type='number' id={'gpa' + index} min="1.0" max="4.0" step="0.1"></input>
+                        </form>
+                    )
+                })}
+
             </div>
         )
     }
