@@ -98,7 +98,7 @@ class ResumePreview extends Component {
                             <div className="yui-gf">
 
                                 <div className="yui-u first">
-                                    <h2>Experience</h2>
+                                    <h2 id="expTag">Experience</h2>
                                 </div>
                                 {/* <!--// .yui-u --> */}
 
@@ -126,21 +126,25 @@ class ResumePreview extends Component {
 
                             <div className="yui-gf last">
                                 <div className="yui-u first">
-                                    <h2>Education</h2>
+                                    <h2 id="eduTag">Education</h2>
                                 </div>
                                 <div className="yui-u">
-                                    {/* {this.props.info.education.map((tester, index) => {
+                                    {this.props.info.education.map((edu, index) => {
                                         return (
                                             <div key={index}>
-                                                <h2>{tester.schoolName}</h2>
+                                                <h2 className="mySchool">
+                                                    <div className="schoolInfo">
+                                                        <h4 className="schoolName" >{edu.schoolName}</h4>
+                                                        <i className='schoolLocation'>{edu.schoolCity}, {edu.schoolState}</i>
+                                                    </div>
+                                                    <div className="schoolYear">
+                                                        <h4>{edu.dateEnd}</h4>
+                                                    </div>
+                                                </h2>
+                                                <h3 className="myMajor">{edu.majorName} — <strong>{Number(edu.gpa).toFixed(1) === 'NaN' ? '' : Number(edu.gpa).toFixed(1) + ' GPA'}</strong></h3>
                                             </div>
                                         )
-                                    })} */}
-
-
-                                    {/* <h2 className="mySchool">{this.props.info.education.schoolName}</h2>
-                                    <h2 className="myDate">{this.props.info.education.endDate}</h2>
-                                    <h3 className="myMajor">{this.props.info.education.majorName} — <strong>{this.props.info.education[0].gpa}</strong> </h3> */}
+                                    })}
                                 </div>
                             </div>
                             {/* <!--// .yui-gf --> */}
@@ -163,4 +167,3 @@ class ResumePreview extends Component {
     }
 }
 export default ResumePreview;
-

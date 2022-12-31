@@ -8,6 +8,8 @@ import uniqid from 'uniqid'
 import Experience from './components/Experience';
 
 
+
+// const defaultEdu = [{schoolName: 'school', majorName: 'major', dateEnd: 'date', gpa: 0}]
 class App extends Component {
   constructor() {
     super()
@@ -59,31 +61,59 @@ class App extends Component {
         })
         break;
       case `schoolName${index}`:
-        this.state.education[index].schoolName = e.target.value;
+        let prevSchoolName = [...this.state.education];
+        prevSchoolName[index].schoolName = e.target.value
+        this.setState({ prevSchoolName })
+        break;
+      case `schoolCity${index}`:
+        let prevSchoolCity = [...this.state.education];
+        prevSchoolCity[index].schoolCity = e.target.value
+        this.setState({ prevSchoolCity })
+        break;
+      case `schoolState${index}`:
+        let prevSchoolState = [...this.state.education];
+        prevSchoolState[index].schoolState = e.target.value
+        this.setState({ prevSchoolState })
         break;
       case `majorName${index}`:
-        this.state.education[index].majorName = e.target.value;
+        let prevMajorName = [...this.state.education];
+        prevMajorName[index].majorName = e.target.value
+        this.setState({ prevMajorName })
         break;
       case `dateEnd${index}`:
-        this.state.education[index].dateEnd = e.target.value;
+        let prevEndDate = [...this.state.education];
+        prevEndDate[index].dateEnd = e.target.value
+        this.setState({ prevEndDate })
         break;
       case `gpa${index}`:
-        this.state.education[index].gpa = Number(e.target.value);
+        let prevGPA = [...this.state.education];
+        prevGPA[index].gpa = e.target.value
+        this.setState({ prevGPA })
         break;
       case `companyName${index}`:
-        this.state.experience[index].companyName = e.target.value;
+        let prevCompanyName = [...this.state.experience];
+        prevCompanyName[index].companyName = e.target.value;
+        this.setState({ prevCompanyName })
         break;
       case `roleName${index}`:
-        this.state.experience[index].roleName = e.target.value;
+        let prevRoleName = [...this.state.experience];
+        prevRoleName[index].roleName = e.target.value;
+        this.setState({ prevRoleName })
         break;
       case `roleDescription${index}`:
-        this.state.experience[index].roleDescription = e.target.value;
+        let prevRoleDescription = [...this.state.experience];
+        prevRoleDescription[index].roleDescription = e.target.value;
+        this.setState({ prevRoleDescription })
         break;
       case `roleStartDate${index}`:
-        this.state.experience[index].roleStartDate = e.target.value;
+        let prevRoleStartDate = [...this.state.experience];
+        prevRoleStartDate[index].roleStartDate = e.target.value;
+        this.setState({ prevRoleStartDate })
         break;
       case `roleEndDate${index}`:
-        this.state.experience[index].roleEndDate = e.target.value
+        let prevRoleEndDate = [...this.state.experience];
+        prevRoleEndDate[index].roleEndDate = e.target.value;
+        this.setState({ prevRoleEndDate })
         break;
       default:
         return;
@@ -117,7 +147,6 @@ class App extends Component {
           <Education onCompChange={this.onCompChange} info={this.state} />
           <Experience onCompChange={this.onCompChange} info={this.state} />
           <div id='myButtons'>
-
             <button id='eduButton' type="button" onClick={(e) => this.addNewForm(e)}>Add education</button>
             <button id='expButton' type="button" onClick={(e) => this.addNewForm(e)}>Add work experience</button>
           </div>
@@ -130,4 +159,5 @@ class App extends Component {
     )
   }
 }
+
 export default App;
