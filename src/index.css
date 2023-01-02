@@ -27,6 +27,12 @@ body {
   border: 2px solid red;
 }
 
+
+#myButtons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
 #mainInput {
   /* border: 2px solid #999999; */
   border-radius: 7px;
@@ -45,20 +51,28 @@ body {
 h4 {
   margin: 0;
 }
+.myExperience,
 .mySchool {
   display: flex;
   justify-content: space-between;
   margin-right: 0.5em;
   text-decoration: italic;
 }
+.companyLocation
 .schoolLocation {
   font-size: 16px;
 }
+
+textarea {
+  resize: none;
+}
+#projectsTag,
 #expTag,
 #eduTag {
   font-style: italic;
 }
-
+.skillsForm,
+.projectsForm,
 .infoForm,
 .experienceForm,
 .educationForm {

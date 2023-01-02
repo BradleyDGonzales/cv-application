@@ -6,6 +6,8 @@ import Header from './components/Header';
 import ResumePreview from './components/ResumePreview';
 import uniqid from 'uniqid'
 import Experience from './components/Experience';
+import Projects from './components/Projects';
+import Skills from './components/Skills';
 
 
 
@@ -20,8 +22,10 @@ class App extends Component {
       email: 'email@yourdomain.com',
       phoneNumber: 'Phone',
       description: 'Description',
-      education: [],
+      projects: [],
       experience: [],
+      education: [],
+      skills: [],
       btnClicked: false,
     }
     this.onCompChange = this.onCompChange.bind(this);
@@ -95,6 +99,16 @@ class App extends Component {
         prevCompanyName[index].companyName = e.target.value;
         this.setState({ prevCompanyName })
         break;
+      case `companyCity${index}`:
+        let prevCompanyCity = [...this.state.experience];
+        prevCompanyCity[index].companyCity = e.target.value;
+        this.setState({ prevCompanyCity })
+        break;
+      case `companyState${index}`:
+        let prevCompanyState = [...this.state.experience];
+        prevCompanyState[index].companyState = e.target.value;
+        this.setState({ prevCompanyState })
+        break;
       case `roleName${index}`:
         let prevRoleName = [...this.state.experience];
         prevRoleName[index].roleName = e.target.value;
@@ -115,7 +129,28 @@ class App extends Component {
         prevRoleEndDate[index].roleEndDate = e.target.value;
         this.setState({ prevRoleEndDate })
         break;
+      case `projectName${index}`:
+        let prevProjectName = [...this.state.projects];
+        prevProjectName[index].projectName = e.target.value;
+        this.setState({ prevProjectName })
+        break;
+      case `projectDescription${index}`:
+        let prevProjectDescription = [...this.state.projects];
+        prevProjectDescription[index].projectDescription = e.target.value;
+        this.setState({ prevProjectDescription })
+        break;
+      case `projectLink${index}`:
+        let prevProjectLink = [...this.state.projects];
+        prevProjectLink[index].projectLink = e.target.value;
+        this.setState({ prevProjectLink })
+        break;
+      case `skillName${index}`:
+        let prevSkills = [...this.state.skills]
+        prevSkills[index].skillName = e.target.value;
+        this.setState({prevSkills})
+        break;
       default:
+
         return;
     }
   }
@@ -132,6 +167,17 @@ class App extends Component {
           experience: [...this.state.experience, []]
         })
         break;
+      case 'projButton':
+        this.setState({
+          projects: [...this.state.projects, []]
+        })
+        break;
+
+      case 'skillsButton':
+        this.setState({
+          skills: [...this.state.skills, []]
+        })
+        break;
       default:
         return;
     }
@@ -144,11 +190,15 @@ class App extends Component {
         <Header />
         <div id='main'>
           <Personal onCompChange={this.onCompChange} info={this.state} />
+          <Projects onCompChange={this.onCompChange} info={this.state} />
           <Education onCompChange={this.onCompChange} info={this.state} />
           <Experience onCompChange={this.onCompChange} info={this.state} />
+          <Skills onCompChange={this.onCompChange} info={this.state} />
           <div id='myButtons'>
             <button id='eduButton' type="button" onClick={(e) => this.addNewForm(e)}>Add education</button>
             <button id='expButton' type="button" onClick={(e) => this.addNewForm(e)}>Add work experience</button>
+            <button id='projButton' type='button' onClick={(e) => this.addNewForm(e)}>Add a project</button>
+            <button id='skillsButton' type='button' onClick={(e) => this.addNewForm(e)}>Add a skill</button>
           </div>
 
         </div>

@@ -48,51 +48,26 @@ class ResumePreview extends Component {
 
                             <div className="yui-gf">
                                 <div className="yui-u first">
-                                    <h2>Personal Projects</h2>
+                                    <h2 id="projectsTag">Personal Projects</h2>
                                 </div>
                                 <div className="yui-u">
-                                    {/* <div className="talent">
-                                        <h2>Web Design</h2>
-                                        <p>Assertively exploit wireless initiatives rather than synergistic core competencies.	</p>
-                                    </div>
+                                    {this.props.info.projects.map((proj, index) => {
+                                        return (
+                                            <div key={'proj' + index}>
+                                                <h2 className="myProjects">
+                                                    <div className="ProjectsInfo">
+                                                        <h4 className="projectName">{proj.projectName} <a href={proj.projectLink}>{proj.projectLink !== undefined ? '(' + proj.projectLink + ')' : null}</a></h4>
+                                                    </div>
+                                                </h2>
+                                                <li className="myProjectDescription">{proj.projectDescription}</li>
+                                            </div>
+                                        )
+                                    })}
 
-                                    <div className="talent">
-                                        <h2>Interface Design</h2>
-                                        <p>Credibly streamline mission-critical value with multifunctional functionalities.	 </p>
-                                    </div>
-
-                                    <div className="talent">
-                                        <h2>Project Direction</h2>
-                                        <p>Proven ability to lead and manage a wide variety of design and development projects in team and independent situations.</p>
-                                    </div> */}
                                 </div>
                             </div>
                             {/* <!--// .yui-gf --> */}
 
-                            <div className="yui-gf">
-                                <div className="yui-u first">
-                                    <h2>Technical</h2>
-                                </div>
-                                <div className="yui-u">
-                                    <ul className="talent">
-                                        <li>XHTML</li>
-                                        <li>CSS</li>
-                                        <li className="last">Javascript</li>
-                                    </ul>
-
-                                    <ul className="talent">
-                                        <li>Jquery</li>
-                                        <li>PHP</li>
-                                        <li className="last">CVS / Subversion</li>
-                                    </ul>
-
-                                    <ul className="talent">
-                                        <li>OS X</li>
-                                        <li>Windows XP/Vista</li>
-                                        <li className="last">Linux</li>
-                                    </ul>
-                                </div>
-                            </div>
                             {/* <!--// .yui-gf--> */}
 
                             <div className="yui-gf">
@@ -103,14 +78,31 @@ class ResumePreview extends Component {
                                 {/* <!--// .yui-u --> */}
 
                                 <div className="yui-u">
+                                    {this.props.info.experience.map((exp, index) => {
+                                        return (
+                                            <div key={'exp' + index}>
+                                                <h2 className="myExperience">
+                                                    <div className="experienceInfo">
+                                                        <h4 className="companyName" >{exp.companyName}</h4>
+                                                        <i className='companyLocation'>{exp.companyCity}, {exp.companyState}</i>
+                                                    </div>
+                                                    <div className="companyYear">
+                                                        <h4>{new Date(exp.roleStartDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}{exp.roleEndDate === undefined || '' ? '- Current' : ' - ' + new Date(exp.roleEndDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })} </h4>
+                                                    </div>
+                                                </h2>
+                                                <h3 className="myRole">{exp.roleName}</h3>
+                                                <li className="myRoleDescription">{exp.roleDescription}</li>
+                                            </div>
+                                        )
+                                    })}
                                     {/* <div className="job">
                                         <h2>Facebook</h2>
                                         <h3>Senior Interface Designer</h3>
                                         <h4>2005-2007</h4>
                                         <p>Intrinsicly enable optimal core competencies through corporate relationships. Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently initiate virtual paradigms and top-line convergence. </p>
-                                    </div>
-
-                                    <div className="job last">
+                                        </div>
+                                        
+                                        <div className="job last">
                                         <h2>Apple Inc.</h2>
                                         <h3>Junior Interface Designer</h3>
                                         <h4>2005-2007</h4>
@@ -131,7 +123,7 @@ class ResumePreview extends Component {
                                 <div className="yui-u">
                                     {this.props.info.education.map((edu, index) => {
                                         return (
-                                            <div key={index}>
+                                            <div key={'edu' + index}>
                                                 <h2 className="mySchool">
                                                     <div className="schoolInfo">
                                                         <h4 className="schoolName" >{edu.schoolName}</h4>
@@ -156,6 +148,18 @@ class ResumePreview extends Component {
                     {/* <!--// yui-main --> */}
                 </div>
                 {/* ><!--// bd --> */}
+                <div className="yui-gf">
+                    <div className="yui-u first">
+                        <h2>Technical</h2>
+                    </div>
+                    <div className="yui-u">
+                        {this.props.info.skills.map((skill, index) => {
+                            return (
+                                <li key={index}>{skill.skillName}</li>
+                            )
+                        })}
+                    </div>
+                </div>
 
                 <div id="ft">
                     <p>{this.props.info.firstName + " " + this.props.info.lastName} — <a>{this.props.info.email}</a> — {this.props.info.phoneNumber}</p>
