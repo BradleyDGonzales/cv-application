@@ -13,7 +13,7 @@ class Experience extends Component {
                             <input defaultValue={exp.companyCity} onChange={(e) => this.props.onCompChange(e, index)} placeholder="Company City" type='text' id={'companyCity' + index}></input>
                             <input defaultValue={exp.companyState} onChange={(e) => this.props.onCompChange(e, index)} placeholder="Company State" type='text' id={'companyState' + index}></input>
                             <input defaultValue={exp.roleName} onChange={(e) => this.props.onCompChange(e, index)} placeholder="Role" type='text' id={'roleName' + index}></input>
-                            <textarea defaultValue={exp.roleDescription} onChange={(e) => this.props.onCompChange(e, index)} placeholder="Roleescription" id={'roleDescription' + index} rows="5"></textarea>
+                            <textarea defaultValue={exp.roleDescription} onChange={(e) => this.props.onCompChange(e, index)} placeholder="Role description" id={'roleDescription' + index} rows="5"></textarea>
                             <input defaultValue={exp.roleStartDate} onChange={(e) => this.props.onCompChange(e, index)} placeholder="Start date" type='date' id={'roleStartDate' + index} min="1.0" max="4.0" step="0.1"></input>
                             <input defaultValue={exp.roleEndDate} onChange={(e) => this.props.onCompChange(e, index)} placeholder="End date" type='date' id={'roleEndDate' + index}></input>
                         </form>

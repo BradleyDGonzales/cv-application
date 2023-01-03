@@ -19,9 +19,9 @@ class ResumePreview extends Component {
 
                         <div className="yui-u">
                             <div className="contact-info">
-                                <h3><a id="pdf" href="#">Download PDF</a></h3>
-                                <h3><a id="myEmail">{this.props.info.email}</a></h3>
+                                <h3>{this.props.info.email}</h3>
                                 <h3 id="myNumber">{this.props.info.phoneNumber}</h3>
+                                <h3 id="myLocation">{this.props.info.city}, {this.props.info.state}</h3>
                             </div>
                             {/* <!--// .contact-info --> */}
                         </div>
@@ -36,7 +36,7 @@ class ResumePreview extends Component {
 
                             <div className="yui-gf">
                                 <div className="yui-u first">
-                                    <h2>Objective</h2>
+                                    <h2 id="objTag">Objective</h2>
                                 </div>
                                 <div className="yui-u">
                                     <p className="enlarge">
@@ -150,9 +150,9 @@ class ResumePreview extends Component {
                 {/* ><!--// bd --> */}
                 <div className="yui-gf">
                     <div className="yui-u first">
-                        <h2>Technical</h2>
+                        <h2 id="skillsTag">Skills</h2>
                     </div>
-                    <div className="yui-u">
+                    <div className="skillsSection">
                         {this.props.info.skills.map((skill, index) => {
                             return (
                                 <li key={index}>{skill.skillName}</li>

@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component, useState } from 'react';
+import React, { Component, useRef } from 'react';
 import Personal from './components/Personal';
 import Education from './components/Education';
 import Header from './components/Header';
@@ -19,6 +19,8 @@ class App extends Component {
       firstName: 'First',
       lastName: 'Last',
       title: 'Title',
+      city: 'City',
+      state: 'State',
       email: 'email@yourdomain.com',
       phoneNumber: 'Phone',
       description: 'Description',
@@ -29,8 +31,10 @@ class App extends Component {
       btnClicked: false,
     }
     this.onCompChange = this.onCompChange.bind(this);
+    this.handleSubmitButton = this.handleSubmitButton.bind(this);
 
   }
+
   onCompChange(e, index) {
     switch (e.target.id) {
       case 'firstName':
@@ -41,6 +45,16 @@ class App extends Component {
       case 'lastName':
         this.setState({
           lastName: e.target.value,
+        })
+        break;
+      case 'city':
+        this.setState({
+          city: e.target.value,
+        })
+        break;
+      case 'state':
+        this.setState({
+          state: e.target.value,
         })
         break;
       case 'title': {
@@ -147,7 +161,7 @@ class App extends Component {
       case `skillName${index}`:
         let prevSkills = [...this.state.skills]
         prevSkills[index].skillName = e.target.value;
-        this.setState({prevSkills})
+        this.setState({ prevSkills })
         break;
       default:
 
@@ -183,10 +197,15 @@ class App extends Component {
     }
     console.log(this.state.education)
   }
-
+  handleSubmitButton() {
+    document.getElementById('main').remove();
+    document.getElementById('headerTag').remove();
+    const myContainer = document.getElementsByClassName('container')[0];
+    myContainer.classList.add('submit');
+  }
   render() {
     return (
-      <div id='container'>
+      <div className='container'>
         <Header />
         <div id='main'>
           <Personal onCompChange={this.onCompChange} info={this.state} />
@@ -199,8 +218,8 @@ class App extends Component {
             <button id='expButton' type="button" onClick={(e) => this.addNewForm(e)}>Add work experience</button>
             <button id='projButton' type='button' onClick={(e) => this.addNewForm(e)}>Add a project</button>
             <button id='skillsButton' type='button' onClick={(e) => this.addNewForm(e)}>Add a skill</button>
+            <button id='submitButton' type='button' onClick={this.handleSubmitButton}>Submit</button>
           </div>
-
         </div>
         <div id='renderedInfo'>
           <ResumePreview info={this.state} />
